@@ -1,0 +1,6 @@
+-/.git
+-/node_modules
+-/public
+-/tsconfig.json
+-/yarn.lock
+-/.eslintcache

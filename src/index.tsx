@@ -6,6 +6,7 @@ import "./assets/index.scss"
 
 import AdminLayout from "./Layouts/Admin";
 import AuthLayout from "./Layouts/Auth";
+
 ReactDOM.render(
   <BrowserRouter>
     <Switch>

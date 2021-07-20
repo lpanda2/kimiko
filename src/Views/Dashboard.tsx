@@ -1,5 +1,5 @@
-import React from 'react'
-import { Bar } from 'react-chartjs-2'
+import React, { useState, useEffect } from 'react';
+import initiateAuthFlow from '../auth.js'
 import moment from "moment";
 import { 
     Card, 
@@ -31,7 +31,6 @@ interface TabData {
     datetime: string | moment.Moment;
 }
 
-
 const ListItem = (props: { messages: TabData[]}) => (
     <List
         className="commits-list"
@@ -49,7 +48,8 @@ const ListItem = (props: { messages: TabData[]}) => (
         )}
     />
 )
-export default function Dashboard() {
+
+
     const messages:TabData[] = [
         {
             id: 1,
@@ -120,52 +120,56 @@ export default function Dashboard() {
             },
         ],
     }
+    
+
+
+export default function Dashboard() {
+    const [claims, setClaims] = useState([]);
+
+    useEffect(() => {
+        initiateAuthFlow();
+    }, []);
+
     return (
         <Row gutter={[16, 16]}>
+
             <Col span={24}>
                 <Card bordered>
-                    <Title level={3}>Welcome to Ant Dashboard</Title>
-                    <Text>This admin dashboard template made with Ant Design and some others library. It will provide some default pages, sidenavs, and others. If you don't know about Ant Design, you could read about it <Link href="https://ant.design" target="_blank">in here</Link></Text>
+                    <Title level={3}>Welcome to Kimiko</Title>
+                    <Text>View your medical claims history.</Text>
                 </Card>
             </Col>
+
             <Col xs={24} sm={24} md={6}>
                 <Card bordered>
                     <Statistic title="Projects" value={23} prefix={<FolderTwoTone twoToneColor="#F63E4F" />} />
                 </Card>
             </Col>
+
             <Col xs={24} sm={24} md={6}>
                 <Card bordered>
                     <Statistic title="Developers" value={57} prefix={<SmileTwoTone twoToneColor="#27C7FF" />} />
                 </Card>
             </Col>
+
             <Col xs={24} sm={24} md={6}>
                 <Card bordered>
                     <Statistic title="Meeeting" value={17} prefix={<CalendarTwoTone twoToneColor="#F63848" />} />
                 </Card>
             </Col>
+
             <Col xs={24} sm={24} md={6}>
                 <Card bordered>
                     <Statistic title="Bug Fixed" value={87} prefix={<BugTwoTone twoToneColor="#117EFF" />} suffix={`/ 209`} />
                 </Card>
             </Col>
+
             <Col xs={24} sm={24} md={24}>
                 <Row gutter={[16, 16]}>
                     <Col xs={24} sm={24} md={12}>
                         <Card bordered >
                             <div style={{ minHeight: "400px" }}>
-                                <Bar data={chartData} options={{
-                                    maintainAspectRatio: false,
-                                    responsive: true,
-                                    scales: {
-                                        yAxes: [
-                                            {
-                                                ticks: {
-                                                    beginAtZero: true,
-                                                },
-                                            },
-                                        ],
-                                    },
-                                }} />
+
                             </div>
                         </Card>
                     </Col>
@@ -189,3 +193,8 @@ export default function Dashboard() {
         </Row>
     )
 }
+
+
+
+
+

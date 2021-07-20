@@ -4,9 +4,6 @@ import {
 } from 'antd';
 import { Route, Switch, RouteComponentProps, Redirect } from "react-router-dom";
 import Routes from "../Routes";
-import AdminHeader from "../Components/Header/AdminHeader"
-import AdminFooter from "../Components/Footer/AdminFooter"
-import Sidebar from "../Components/Sidebar/Sidebar"
 import { RouteType } from '../Models';
 const { Content } = Layout;
 
@@ -53,6 +50,7 @@ export default class AdminLayout extends Component<RouteComponentProps> {
             collapsed: !this.state.collapsed,
         });
     };
+
     getCurrentRouteText = (path: string, thisRoutes: RouteType[]): string => {
         for (let i = 0; i < thisRoutes.length; i += 1) {
             const menu = thisRoutes[i];
@@ -70,20 +68,18 @@ export default class AdminLayout extends Component<RouteComponentProps> {
         }
         return "Brand";
     };
+
     render() {
         const {collapsed} = this.state;
         return (
             <React.Fragment>
                 <Layout>
-                    <Sidebar collapsed={collapsed} routes={Routes} />
-                    <Layout className="site-layout" style={{ marginLeft: collapsed ? 0 : 200 }}>
-                        <AdminHeader currentRouteText={this.getCurrentRouteText(this.props.location.pathname, Routes)} collapsed={collapsed} routes={Routes} toggleCollapsed={this.toggleCollapsed} />
+                    <Layout className="site-layout" style={{ marginLeft: 0}}>
                         <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
                             <div style={{ padding: 24, minHeight: 360 }}>
                                 <Switch>{this.getRoutes(Routes)}</Switch>
                             </div>
                         </Content>
-                        <AdminFooter />
                     </Layout>
                 </Layout>
             </React.Fragment>
