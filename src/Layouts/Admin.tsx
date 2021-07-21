@@ -74,7 +74,7 @@ export default class AdminLayout extends Component<RouteComponentProps> {
         return (
             <React.Fragment>
                 <Layout>
-                    <Layout className="site-layout" style={{ marginLeft: 0}}>
+                <Layout className="site-layout" style={{ marginLeft: 0, height: '100vw'}}>
                         <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
                             <div style={{ padding: 24, minHeight: 360 }}>
                                 <Switch>{this.getRoutes(Routes)}</Switch>

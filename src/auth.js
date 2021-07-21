@@ -1,6 +1,6 @@
 import { credentials } from "./serverauth";
 
-const remoteUrls = {
+export const remoteUrls = {
     'eob' : credentials.auth.tokenHost + '/v1/fhir/ExplanationOfBenefit',
     'patient' : credentials.auth.tokenHost + '/v1/fhir/Patient',
     'coverage' : credentials.auth.tokenHost + '/v1/fhir/Coverage',
@@ -9,7 +9,7 @@ const remoteUrls = {
     'tokens' : credentials.auth.tokenHost + '/v1/o/authorized_tokens/'
 };
 
-const server = {
+export const server = {
     authorizationEndpoint: 
     `${credentials.auth.tokenHost}${credentials.auth.authorizePath}` +
         '?response_type=code' +
