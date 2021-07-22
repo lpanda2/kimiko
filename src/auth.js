@@ -1,5 +1,7 @@
 import { credentials } from "./serverauth";
 
+const redirectPath = 'http://localhost:3000/index.html';
+
 export const remoteUrls = {
     'eob' : credentials.auth.tokenHost + '/v1/fhir/ExplanationOfBenefit',
     'patient' : credentials.auth.tokenHost + '/v1/fhir/Patient',
